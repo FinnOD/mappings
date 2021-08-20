@@ -9,7 +9,7 @@ setup(
 	version='0.0.1',
 	description="Mapping and Analysis of Phosphorylation Pathways Identified through Network/Graph Signalling",
 	long_description=long_description,
-	long_description_content_type='Description-Content-Type: text/markdown; charset=UTF-8; variant=GFM',
+	long_description_content_type='text/markdown',
 	author="Finn O'Donoghue",
 	author_email='finnodonoghue@gmail.com',
 	url='https://github.com/finnod/mappings',

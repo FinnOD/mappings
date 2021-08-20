@@ -1,4 +1,5 @@
 # 🗺 MAPPINGS v0.0.1
+
 ## Mapping and Analysis of Phosphorylation Pathways Identified through Network/Graph Signalling
 
 Mappings is a tool for blah blah. 
@@ -24,6 +25,7 @@ Designed and programmed with love by Dr. Jack Adderley and Finn O'Donoghue.
 ## Usage
 
 	mappings [OPTIONS] ARRAY_DATA_PATH OUTPUT_PATH
+
 or 
 
 	python -m mappings [OPTIONS] ARRAY_DATA_PATH OUTPUT_PATH
@@ -32,7 +34,6 @@ or
 
 	  --nwalks INTEGER                Number of walks.
 	  --connection_network_path PATH  Network of known phosphorylation connections.
-
 
 ## Input / Output Specification
 
