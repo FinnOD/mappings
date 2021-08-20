@@ -48,7 +48,11 @@ setup(
 			'mappings=mappings.__main__:main',
 		],
 	},
-	package_data={'mappings': ['data/*']},
+	package_data={'mappings': [
+		'*.csv',
+		'data/input/*',
+		]
+	},
 
 	install_requires=[
 		'numpy',
