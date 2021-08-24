@@ -44,19 +44,19 @@ Optional (all have defaults set)
 
 CSV file with headers:
 
-><ins>**UniprotID**</ins> – (eg. Q9Y6R4) Must be accurate as this is what is used to map the dataset into the known interaction network.
+<ins>**UniprotID**</ins> – (eg. Q9Y6R4) Must be accurate as this is what is used to map the dataset into the known interaction network.
 
-><ins>**AntibodyTarget**</ins>  – This can be in any form or left blank
+<ins>**AntibodyTarget**</ins>  – This can be in any form or left blank
 
-><ins>**Phosphosite**</ins> – This is the antibodies recognised phosphosite, in the form (Y1234 or S234 or T564, combinations of Y1234+Y1235 or S235/T537 are accepted and will be split during the analysis into the individual phosphosites.
+<ins>**Phosphosite**</ins> – This is the antibodies recognised phosphosite, in the form (Y1234 or S234 or T564, combinations of Y1234+Y1235 or S235/T537 are accepted and will be split during the analysis into the individual phosphosites.
 
-><ins>**ControlMean**</ins>  – Mean control signal/value (mean of technical duplicates or of biological duplicates if available). Can be performed on single none replicated signal if desired.
+<ins>**ControlMean**</ins>  – Mean control signal/value (mean of technical duplicates or of biological duplicates if available). Can be performed on single none replicated signal if desired.
 
-><ins>**ControlError(%)**</ins>  – Mean control signal/value error as a percentage (Error range between replicates / mean signal/value * 100) – if performed on a single replicate fill this column with ‘0’
+<ins>**ControlError(%)**</ins>  – Mean control signal/value error as a percentage (Error range between replicates / mean signal/value * 100) – if performed on a single replicate fill this column with ‘0’
 
-><ins>**TreatedMean**</ins>  – Mean treated/infected signal/value (mean of technical duplicates or of biological duplicates if available). Can be performed on single none replicated signal if desired.
+<ins>**TreatedMean**</ins>  – Mean treated/infected signal/value (mean of technical duplicates or of biological duplicates if available). Can be performed on single none replicated signal if desired.
 
-><ins>**TreatedError(%)**</ins>  – Mean treated/infected signal/value error as a percentage (Error range between replicates / mean signal/value * 100) – if performed on a single replicate fill this column with ‘0’
+<ins>**TreatedError(%)**</ins>  – Mean treated/infected signal/value error as a percentage (Error range between replicates / mean signal/value * 100) – if performed on a single replicate fill this column with ‘0’
 
 ### Output Data
 
