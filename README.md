@@ -82,7 +82,7 @@ For visualisation of the output network, we recommend using [Cytoscape](https://
 
  - To import the network, select file - import - network from file, select the MAPPINGS analysis output. In the pop-up window click on ‘Kinase’ and select ‘Source Node (green circle), click on Substrate and select ‘Target Node’ (orange bullzeye) and ‘Phosphosite’ and select ‘Interaction type' (purple triangle).
 
- - The network will render and using the Style tab the network can be visually customised to desired design. To use our custom style [Cytoscape Style](data/MAPPINGSCytoscapeStyle.xml).
+ - The network will render and using the Style tab the network can be visually customised to desired design. To use our custom style [Cytoscape Style](mappings/data/MAPPINGSCytoscapeStyle.xml).
 
 ### Connection  Network
 The phosphorylation network used here as a backbone for the MAPPINGS analysis is an accumulated from literature reports and has been updated to include further connections and phosphorylation effects (see [Adderley et al., 2021](https://www.biorxiv.org/content/10.1101/2021.05.07.443051v1)) and original network ([PhosphoAtlas](https://pubmed.ncbi.nlm.nih.gov/26921330/)). Updated version may be available under data/input/NetworkComplete.csv Please email the authors, or submit a pull request to update this file with any new data. Altenratively, additional connections can be amended into the NetworkComplete.csv if desired.
