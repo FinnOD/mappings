@@ -4,6 +4,7 @@
 
 .DS_Store
 .vscode/
+venv/
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
