@@ -39,7 +39,7 @@ def analyse(
 	nWalks: int = 1000,
 	errorThreshold: float = 1.0, 
 	lowSignalCutOff: float = 1000.0,
-	panNormaliser: bool = False
+	panNormaliser: bool = True
 	) -> None:
 
 	# Caveats for dataset

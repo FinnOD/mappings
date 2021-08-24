@@ -42,8 +42,8 @@ def DatasetOrganisationNormalise(Data, LowSignalCutOff, ErrorThreshold):
 
 	Data['Log2FoldChange'] = np.log2(Data['IRaw'] / Data['URaw'])
 
-	PanData = Data[Data['Phosphosite'].str.contains("-", na=False)]
-	PhosData = Data[~Data['Phosphosite'].str.contains("-", na=False)]
+	PanData = Data[Data['Phosphosite'].str.contains("Pan", na=False)]
+	PhosData = Data[~Data['Phosphosite'].str.contains("Pan", na=False)]
 
 	# If multiple values are available for a given phosphorylation site/protein average values
 	PhosData = PhosData.groupby(['Concat'], as_index=False).agg(

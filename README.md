@@ -35,8 +35,9 @@ Optional (all have defaults set)
 
     --nwalks                   (INTEGER)    Number of walks, default = 1,000,000.
     --errorThreshold           (INTEGER)    Error threshold used to refine data used, default = 1.0, recommended range = 0 - 1.0, (1.0 = total error is not greater than signal, 0 = no removal of high error signals) 
-    --lowSignalCutOff          (INTEGER)    Removal of wlow intensity signals, default = 1,000, recommended range = 500 - 1,500 for Kinexus antibody microarray datasets, can be move up or down depending on the desire output network size
-    --panNormaliser            (BOOLEAN)    Normalises signals by avaialble Pan-specific antibody data provided. Default = Yes (normalise)
+    --lowSignalCutOff          (INTEGER)    Removal of low intensity signals, default = 1,000, recommended range = 500 - 1,500 for Kinexus antibody microarray datasets, can be move up or down depending on the desire output network size
+    --panNormaliser            (BOOLEAN)    Normalises signals by available Pan-specific antibody data provided. Default = Yes (normalise)
+    --trailLength              (INTEGER)    The minimum number of edges a walk is required to pass throguh to be counted as a trail, default = 3, range = 1+, reducing this will result in more complex outputs which are less focused on pathway identifcation
 
 ## Input / Output Specification
 
@@ -48,7 +49,7 @@ CSV file with headers:
 
 <ins>**AntibodyTarget**</ins>  – This can be in any form or left blank
 
-<ins>**Phosphosite**</ins> – This is the antibodies recognised phosphosite, in the form (Y1234 or S234 or T564, combinations of Y1234+Y1235 or S235/T537 are accepted and will be split during the analysis into the individual phosphosites.
+<ins>**Phosphosite**</ins> – This is the antibodies recognised phosphosite, in the form (Y1234 or S234 or T564, combinations of Y1234+Y1235 or S235/T537 are accepted and will be split during the analysis into the individual phosphosites. If Pan-specifc antibodies are included (to enable protein level normalisation) they need to be denoted with the term "Pan"
 
 <ins>**ControlMean**</ins>  – Mean control signal/value (mean of technical duplicates or of biological duplicates if available). Can be performed on single none replicated signal if desired.
 
@@ -73,9 +74,9 @@ The following additional headers can be selected;
 
  - Control_edge_usage
  - Treated_edge_usage
+ 
 
-
-    --edgeUsage # Add this!
+     --edgeUsage    (BOOLEAN)    Add edge usage numbers to output .csv, not required for cytoscape rendering, default=False
 
 
 For visualisation of the output network, we recommend using [Cytoscape](https://cytoscape.org/). 

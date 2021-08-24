@@ -7,7 +7,7 @@ def DatasetOrganisation(Data, LowSignalCutOff, ErrorThreshold):
 	Data.columns = ['UniprotID', 'Protein', 'Phosphosite', 'URaw', 'UError', 'IRaw', 'IError']
 
 	# Remove pan-specific signals
-	Data = Data[~Data['Phosphosite'].str.contains("-", na=False)]
+	Data = Data[~Data['Phosphosite'].str.contains("Pan", na=False)]
 
 	# Remove Low intensity signals (If neither of the signals are above 1000 units)
 	Data = Data[(Data['URaw'] >= LowSignalCutOff) | (Data['IRaw'] >= LowSignalCutOff)]
