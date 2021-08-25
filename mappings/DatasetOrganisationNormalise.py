@@ -4,7 +4,17 @@ import numpy as np
 
 def DatasetOrganisationNormalise(Data, LowSignalCutOff, ErrorThreshold):
 	# Rename columns to easier names
-	Data.columns = ['UniprotID', 'Protein', 'Phosphosite', 'URaw', 'UError', 'IRaw', 'IError']
+	columnNameDict = {
+		'UniprotID': 'UniprotID', 
+		'AntibodyTarget': 'Protein', 
+		'Phosphosite': 'Phosphosite', 
+		'ControlMean': 'URaw', 
+		'ControlError(%)': 'UError', 
+		'TreatedMean': 'IRaw', 
+		'TreatedError(%)': 'IError'
+	}
+
+	Data = Data.rename(columns = columnNameDict)
 
 	# Remove Low intensity signals (If neither of the signals are above 1000 units)
 	Data = Data[(Data['URaw'] >= LowSignalCutOff) | (Data['IRaw'] >= LowSignalCutOff)]

@@ -1,4 +1,4 @@
-Uniprot ID,Protein,Phospho Site (Human),UMean,UMean Error (%),TMean,TMean Error (%)
+UniprotID,AntibodyTarget,Phosphosite,ControlMean,ControlError(%),TreatedMean,TreatedError(%)
 P00519,ABL1,Y469,3181,9,3275,15
 Q13085,AcCoA carboxylase,S80,6903,11,8593,10
 Q07912,ACK1 ,Y284,6228,22,9598,9

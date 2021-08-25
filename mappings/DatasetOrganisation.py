@@ -3,8 +3,18 @@ import pandas as pd
 import numpy as np
 
 def DatasetOrganisation(Data, LowSignalCutOff, ErrorThreshold):
-	# Rename columns to easier names
-	Data.columns = ['UniprotID', 'Protein', 'Phosphosite', 'URaw', 'UError', 'IRaw', 'IError']
+		# Rename columns to easier names
+	columnNameDict = {
+		'UniprotID': 'UniprotID', 
+		'AntibodyTarget': 'Protein', 
+		'Phosphosite': 'Phosphosite', 
+		'ControlMean': 'URaw', 
+		'ControlError(%)': 'UError', 
+		'TreatedMean': 'IRaw', 
+		'TreatedError(%)': 'IError'
+	}
+
+	Data = Data.rename(columns = columnNameDict)
 
 	# Remove pan-specific signals
 	Data = Data[~Data['Phosphosite'].str.contains("Pan", na=False)]
