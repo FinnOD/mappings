@@ -51,6 +51,11 @@ setup(
 	package_data={'mappings': [
 		'*.csv',
 		'data/input/*',
+		'data/*'
+		'.xml'
+		'images/*'
+		'.jpg',
+		'.png'
 		]
 	},
 
