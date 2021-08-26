@@ -76,13 +76,13 @@ def analyse(
 	# RandomWalks and output processing
 
 	print("Positive Trail Analysis")
-	PosWalks = RandomTrail(PosEdges, nWalks, Control=False, Positive=True)
+	PosWalks = RandomTrail(PosEdges, nWalks, Control=False, Positive=True, minimumTrailLength=minimumTrailLength)
 	print("Positive Trail Analysis (Control Data)")
-	CPosWalks = RandomTrail(PosEdges, nWalks, Control=True, Positive=True)
+	CPosWalks = RandomTrail(PosEdges, nWalks, Control=True, Positive=True, minimumTrailLength=minimumTrailLength)
 	print("Negative Trail Analysis")
-	NegWalks = RandomTrail(NegEdges, nWalks, Control=False, Positive=False)
+	NegWalks = RandomTrail(NegEdges, nWalks, Control=False, Positive=False, minimumTrailLength=minimumTrailLength)
 	print("Negative Trail Analysis (Control Data)")
-	CNegWalks = RandomTrail(NegEdges, nWalks, Control=True, Positive=False)
+	CNegWalks = RandomTrail(NegEdges, nWalks, Control=True, Positive=False, minimumTrailLength=minimumTrailLength)
 
 	print("Walks: Completed")
 	#######################################################################################################################

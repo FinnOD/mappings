@@ -5,9 +5,9 @@ from tqdm import tqdm
 #######################################################################################################################
 # RandomTrail function (Walks as (N,N,N,N))
 
-def RandomTrail(g, nwalks, Control, Positive):
+def RandomTrail(g, nwalks, Control, Positive, minimumTrailLength):
 
-	pbar = tqdm(total=nwalks, desc='Running Random Trails', unit='walks')  # Progress Bar
+	pbar = tqdm(total=nwalks, desc='Running Random Trails', unit=' trails')  # Progress Bar
 	VTX = g.nodes()  # defines VTX as all of the nodes in the graph
 	walks = list()
 	j = 0
@@ -99,7 +99,7 @@ def RandomTrail(g, nwalks, Control, Positive):
 
 			walk.append(walkelements)  # defines the walk as the sum of the walk elements
 
-		if len(walk) >= 3:
+		if len(walk) >= minimumTrailLength:
 			walks.append(walk)
 
 			j = j + 1
