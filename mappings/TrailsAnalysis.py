@@ -39,7 +39,9 @@ def analyse(
 	nWalks: int = 1000,
 	errorThreshold: float = 1.0, 
 	lowSignalCutOff: float = 1000.0,
-	panNormaliser: bool = True
+	panNormaliser: bool = True,
+	edgeUsage: bool = False,
+	minimumTrailLength: int = 3
 	) -> None:
 
 	# Caveats for dataset
@@ -99,9 +101,9 @@ def analyse(
 	def ChangePercent(df1, df2, Positive):
 		# Merge Basal and Biological runs then determine Change(%) from basal network
 		df3 = df1.merge(df2, on=['Kinase', 'Substrate', 'Phosphosite', 'Substrate_effect', 'INVLog2FoldChange',
-								'Log2FoldChange'], how='outer')
+								'Log2FoldChange', 'FoldChange', 'INVFoldChange'], how='outer', suffixes=['_basal', '_biological'])
 
-		df3['Change (%)'] = df3['TotalWalks_y'] / df3['TotalWalks_x'] * 100 - 100
+		df3['Change (%)'] = df3['TotalWalks_biological'] / df3['TotalWalks_basal'] * 100 - 100
 
 		df3 = df3[df3['Change (%)'] > 5]
 
@@ -115,10 +117,30 @@ def analyse(
 	PosFinal = ChangePercent(CPosData, PosData, Positive=True)
 	NegFinal = ChangePercent(CNegData, NegData, Positive=False)
 
-	# Merge to final stage networks for visualisation
+	# Merge to final stage networks for visualisation, should be no conflicting rows.
 	NetworkFinal = PosFinal.merge(NegFinal, how='outer')
 
 	########################################################################################################################
+	outputColumns = ['Kinase', 'Substrate', 'Phosphosite', 'Substrate_effect', 'Log2FoldChange', 'Change (%)']
+	columnNameDict = {
+		'Kinase': 'Kinase', 
+		'Substrate': 'Substrate',
+		'Phosphosite': 'Phosphosite', 
+		'Substrate_effect': 'SubstrateEffect', 
+		'Log2FoldChange': 'Log2FoldChange', 
+		'Change (%)': 'Change (%)'
+	}
+
+	if edgeUsage:
+		outputColumns += ['TotalWalks_basal', 'TotalWalks_biological']
+		columnNameDict.update({
+			'TotalWalks_basal': 'ControlEdgeUsage',
+			'TotalWalks_biological': 'TreatedEdgeUsage'
+			}
+		)
+		
+	NetworkFinal = NetworkFinal[outputColumns]
+	NetworkFinal = NetworkFinal.rename(columns=columnNameDict)
 
 	# Output for Cytoscape
 	NetworkFinal.to_csv(outputPath)
