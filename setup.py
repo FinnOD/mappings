@@ -7,7 +7,7 @@ long_description = (this_directory / "README.md").read_text(encoding='utf-8')
 
 setup(
 	name='mappings',
-	version='0.0.2',
+	version='0.0.3',
 	description="Mapping and Analysis of Phosphorylation Pathways Identified through Network/Graph Signalling",
 	long_description=long_description,
 	long_description_content_type='text/markdown',
