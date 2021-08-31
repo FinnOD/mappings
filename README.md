@@ -24,17 +24,17 @@ If this doesn’t work, you may not have pip installed. - Note you will also nee
 
 
 ## Usage
-####on Linux and MacOS
+#### on Linux and MacOS
 
 	mappings [OPTIONS] ARRAY_DATA_PATH OUTPUT_PATH
 
-####or Windows
+#### or Windows
 
 	python -m mappings [OPTIONS] ARRAY_DATA_PATH OUTPUT_PATH
 
 Note: If you drag and drop your data file.csv it will fill the PATH for you.
 
-###Examples
+### Examples
 
     (Default settings) python -m mappings mappings_kinase_data.csv mappings_kinase_analysis.csv
     (Custom settings)  python -m mappings --nwalks 100000 --errorThreshold 0.5 --panNormaliser False mappings_kinase_data.csv mappings_kinase_analysis.csv
