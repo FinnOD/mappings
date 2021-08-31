@@ -12,7 +12,7 @@ def RandomTrail(g, nwalks, Control, Positive, minimumTrailLength):
 	walks = list()
 	j = 0
 
-	while j <= nwalks:
+	while j < nwalks:
 
 		walk = list()
 		visited = list()
