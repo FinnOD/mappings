@@ -1,10 +1,10 @@
-# 🗺 MAPPINGS v0.0.1
+# 🗺 MAPPINGS v0.0.4
 
 ## Mapping and Analysis of Phosphorylation Pathways Identified through Network/Graph Signalling
 
 MAPPINGS is a tool for the deconvolution of complex phosphorylation-based signalling datasets. It was designed to use antibody microarray datasets (eg. Kinexus KAM antibody microarrays), though any comparative dataset (control vs treated/infected) can be analysed. The MAPPINGS tool seeks to identify pathways of consistent phosphorylation signalling changes in a comparative dataset and rapidly identify lead networks for subsequent validation and exploration. The program functions through a random trails-based function which is influenced by the change in signals observed. First described by J. Adderley and F. O’Donoghue in MAPPINGS v1.0, a tool for network analysis of large phospho-signalling datasets: application to host erythrocyte response to *Plasmodium* infection ([Adderley et al., 2021](https://www.biorxiv.org/content/10.1101/2021.05.07.443051v1)).
 
-![Example image of MAPPINGS output network formatted in cytoscape](images/ExampleNetwork.jpg)
+![Example image of MAPPINGS output network formatted in cytoscape](https://github.com/FinnOD/mappings/blob/main/images/ExampleNetwork.jpg)
 
  - **Figure 1:** Kinases and substrates are represented as nodes (dark nodes = substrates, light nodes = kinases) and phosphorylation events are represented as edges, which are designated with the specific phosphorylation site. Edges are represented in a colour gradient from grey to green (positive edges) and grey to red (negative edges) and a size gradient which corresponds to the percentage change from the control network trails (%CFC). The effect of the edge is represented in the arrowhead (arrow = activation, square = inhibition).
 
@@ -16,7 +16,7 @@ Designed and programmed with love by Dr. Jack Adderley and Finn O'Donoghue.
 
 If this doesn’t work, you may not have pip installed. - Note you will also need python install, see dependencies.
 
-####Dependencies:
+#### Dependencies:
 
 - [Python ](https://www.python.org/) - this will include pip.
 
