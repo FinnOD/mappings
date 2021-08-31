@@ -1,12 +1,13 @@
 
 from setuptools import setup
+from pathlib import Path
 
-with open("README.md", 'r') as f:
-	long_description = f.read()
+this_directory = Path(__file__).parent
+long_description = (this_directory / "README.md").read_text(encoding='utf-8')
 
 setup(
 	name='mappings',
-	version='0.0.1',
+	version='0.0.2',
 	description="Mapping and Analysis of Phosphorylation Pathways Identified through Network/Graph Signalling",
 	long_description=long_description,
 	long_description_content_type='text/markdown',
