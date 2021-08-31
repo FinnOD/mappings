@@ -14,30 +14,42 @@ Designed and programmed with love by Dr. Jack Adderley and Finn O'Donoghue.
 
 	pip install mappings
 
-If this doesn’t work, you may not have pip installed. [Click here](https://pip.pypa.io/en/stable/installation/) for a guide on how to install pip.
+If this doesn’t work, you may not have pip installed. - Note you will also need python install, see dependencies.
+
+####Dependencies:
+
+- [Python ](https://www.python.org/) - this will include pip.
+
+- [pip](https://pip.pypa.io/en/stable/installation/) for a guide on how to install pip.
+
 
 ## Usage
-on Linux and MacOS
+####on Linux and MacOS
 
 	mappings [OPTIONS] ARRAY_DATA_PATH OUTPUT_PATH
 
-or Windows
+####or Windows
 
 	python -m mappings [OPTIONS] ARRAY_DATA_PATH OUTPUT_PATH
 
+Note: If you drag and drop your data file.csv it will fill the PATH for you.
+
+###Examples
+
+    (Default settings) python -m mappings mappings_kinase_data.csv mappings_kinase_analysis.csv
+    (Custom settings)  python -m mappings --nwalks 100000 --errorThreshold 0.5 --panNormaliser False mappings_kinase_data.csv mappings_kinase_analysis.csv
+
 ### Options
 
-Required
-
-    --connection_network_path  (PATH)       Network of known phosphorylation connection network (a network is provided in data\input\NetworkComplete.csv).
-    
-Optional (all have defaults set)
+Each of the following options has a default set. Therefore, they only need to be input if different values are desired. 
 
     --nwalks                   (INTEGER)    Number of walks, default = 1,000,000.
     --errorThreshold           (INTEGER)    Error threshold used to refine data used, default = 1.0, recommended range = 0 - 1.0, (1.0 = total error is not greater than signal, 0 = no removal of high error signals) 
     --lowSignalCutOff          (INTEGER)    Removal of low intensity signals, default = 1,000, recommended range = 500 - 1,500 for Kinexus antibody microarray datasets, can be move up or down depending on the desire output network size
     --panNormaliser            (BOOLEAN)    Normalises signals by available Pan-specific antibody data provided. Default = Yes (normalise)
     --trailLength              (INTEGER)    The minimum number of edges a walk is required to pass throguh to be counted as a trail, default = 3, range = 1+, reducing this will result in more complex outputs which are less focused on pathway identifcation
+    --connection_network_path  (PATH)       Network of known phosphorylation connection network (a network is provided in data\input\NetworkComplete.csv).
+
 
 ## Input / Output Specification
 
