@@ -59,17 +59,17 @@ CSV file with headers:
 
 **UniprotID** – (eg. Q9Y6R4) Must be accurate as this is what is used to map the dataset into the known interaction network.
 
-<ins>**AntibodyTarget**</ins>  – This can be in any form or left blank
+**AntibodyTarget** – This can be in any form or left blank
 
 **Phosphosite** – This is the antibodies recognised phosphosite, in the form (Y1234 or S234 or T564, combinations of Y1234+Y1235 or S235/T537 are accepted and will be split during the analysis into the individual phosphosites. If Pan-specific antibodies are included (to enable protein level normalisation) they need to be denoted with the term "Pan"
 
-**ControlMean**  – Mean control signal/value (mean of technical duplicates or of biological duplicates if available). Can be performed on single none replicated signal if desired.
+**ControlMean** – Mean control signal/value (mean of technical duplicates or of biological duplicates if available). Can be performed on single none replicated signal if desired.
 
-**ControlError(%)**  – Mean control signal/value error as a percentage (Error range between replicates / mean signal/value * 100) – if performed on a single replicate fill this column with ‘0’
+**ControlError(%)** – Mean control signal/value error as a percentage (Error range between replicates / mean signal/value * 100) – if performed on a single replicate fill this column with ‘0’
 
-<ins>**TreatedMean**  – Mean treated/infected signal/value (mean of technical duplicates or of biological duplicates if available). Can be performed on single none replicated signal if desired.
+<ins>**TreatedMean** – Mean treated/infected signal/value (mean of technical duplicates or of biological duplicates if available). Can be performed on single none replicated signal if desired.
 
-**TreatedError(%)**  – Mean treated/infected signal/value error as a percentage (Error range between replicates / mean signal/value * 100) – if performed on a single replicate fill this column with ‘0’
+**TreatedError(%)** – Mean treated/infected signal/value error as a percentage (Error range between replicates / mean signal/value * 100) – if performed on a single replicate fill this column with ‘0’
 
 ### Output Data
 
