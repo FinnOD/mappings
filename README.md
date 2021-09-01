@@ -14,7 +14,7 @@ Designed and programmed with love by Dr. Jack Adderley and Finn O'Donoghue.
 
 	pip install mappings
 
-If this doesn’t work, you may not have pip installed. - Note you will also need python install, see dependencies.
+If this doesn’t work, you may not have pip installed. - Note you will also need python installed, see dependencies.
 
 #### Dependencies:
 
@@ -29,6 +29,7 @@ If this doesn’t work, you may not have pip installed. - Note you will also nee
 	mappings [OPTIONS] ARRAY_DATA_PATH OUTPUT_PATH
 
 #### or Windows
+
 
 	python -m mappings [OPTIONS] ARRAY_DATA_PATH OUTPUT_PATH
 
@@ -47,7 +48,7 @@ Each of the following options has a default set. Therefore, they only need to be
     --errorThreshold           (INTEGER)    Error threshold used to refine data used, default = 1.0, recommended range = 0 - 1.0, (1.0 = total error is not greater than signal, 0 = no removal of high error signals) 
     --lowSignalCutOff          (INTEGER)    Removal of low intensity signals, default = 1,000, recommended range = 500 - 1,500 for Kinexus antibody microarray datasets, can be move up or down depending on the desire output network size
     --panNormaliser            (BOOLEAN)    Normalises signals by available Pan-specific antibody data provided. Default = Yes (normalise)
-    --minimumTrailLength              (INTEGER)    The minimum number of edges a walk is required to pass throguh to be counted as a trail, default = 3, range = 1+, reducing this will result in more complex outputs which are less focused on pathway identification
+    --minimumTrailLength       (INTEGER)    The minimum number of edges a walk is required to pass throguh to be counted as a trail, default = 3, range = 1+, reducing this will result in more complex outputs which are less focused on pathway identification
     --connection_network_path  (PATH)       Network of known phosphorylation connection network (a network is provided in data\input\NetworkComplete.csv).
 
 
@@ -88,7 +89,8 @@ The following additional headers can be selected;
  - Treated_edge_usage
  
 
-     --edgeUsage    (FLAG)    Add edge usage numbers to output .csv, not required for cytoscape rendering
+    --edgeUsage    (FLAG)    Add edge usage numbers to output .csv, not required for cytoscape rendering
+
 
 
 For visualisation of the output network, we recommend using [Cytoscape](https://cytoscape.org/). 

@@ -69,7 +69,7 @@ def analyse(
 
 	# Network as DiGraph and final edgelists
 	PosEdges, NegEdges, PosNetworkFinal, NegNetworkFinal = NetworkasDiGraph(PosNetwork, NegNetwork)
-	# PosNetwork.to_csv(r'Output/troph pos net.csv') #TODO Why? Re-implement
+	# PosNetwork.to_csv(r'Output/troph pos net.csv') #TODO Why? Re-implement - Can be deleted, this was something i used to check the network
 	print("Networks Setup: Successful")
 
 	#######################################################################################################################
