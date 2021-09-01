@@ -22,14 +22,13 @@ If this doesn’t work, you may not have pip installed. - Note you will also nee
 
 - [pip](https://pip.pypa.io/en/stable/installation/) for a guide on how to install pip.
 
-
 ## Usage
+
 #### on Linux and MacOS
 
 	mappings [OPTIONS] ARRAY_DATA_PATH OUTPUT_PATH
 
 #### or Windows
-
 
 	python -m mappings [OPTIONS] ARRAY_DATA_PATH OUTPUT_PATH
 
@@ -58,36 +57,49 @@ Each of the following options has a default set. Therefore, they only need to be
 
 CSV file with headers:
 
-<ins>**UniprotID**</ins> – (eg. Q9Y6R4) Must be accurate as this is what is used to map the dataset into the known interaction network.
+**UniprotID** – (eg. Q9Y6R4) Must be accurate as this is what is used to map the dataset into the known interaction network.
 
 <ins>**AntibodyTarget**</ins>  – This can be in any form or left blank
 
-<ins>**Phosphosite**</ins> – This is the antibodies recognised phosphosite, in the form (Y1234 or S234 or T564, combinations of Y1234+Y1235 or S235/T537 are accepted and will be split during the analysis into the individual phosphosites. If Pan-specific antibodies are included (to enable protein level normalisation) they need to be denoted with the term "Pan"
+**Phosphosite** – This is the antibodies recognised phosphosite, in the form (Y1234 or S234 or T564, combinations of Y1234+Y1235 or S235/T537 are accepted and will be split during the analysis into the individual phosphosites. If Pan-specific antibodies are included (to enable protein level normalisation) they need to be denoted with the term "Pan"
 
-<ins>**ControlMean**</ins>  – Mean control signal/value (mean of technical duplicates or of biological duplicates if available). Can be performed on single none replicated signal if desired.
+**ControlMean**  – Mean control signal/value (mean of technical duplicates or of biological duplicates if available). Can be performed on single none replicated signal if desired.
 
-<ins>**ControlError(%)**</ins>  – Mean control signal/value error as a percentage (Error range between replicates / mean signal/value * 100) – if performed on a single replicate fill this column with ‘0’
+**ControlError(%)**  – Mean control signal/value error as a percentage (Error range between replicates / mean signal/value * 100) – if performed on a single replicate fill this column with ‘0’
 
-<ins>**TreatedMean**</ins>  – Mean treated/infected signal/value (mean of technical duplicates or of biological duplicates if available). Can be performed on single none replicated signal if desired.
+<ins>**TreatedMean**  – Mean treated/infected signal/value (mean of technical duplicates or of biological duplicates if available). Can be performed on single none replicated signal if desired.
 
-<ins>**TreatedError(%)**</ins>  – Mean treated/infected signal/value error as a percentage (Error range between replicates / mean signal/value * 100) – if performed on a single replicate fill this column with ‘0’
+**TreatedError(%)**  – Mean treated/infected signal/value error as a percentage (Error range between replicates / mean signal/value * 100) – if performed on a single replicate fill this column with ‘0’
 
 ### Output Data
 
 The output will be in CSV file format with the following default headers;
 
- - Kinase 
- - Substrate
- - Phosphosite
- - Change(%)
- - Log2FoldChange
- - Substrate_effect
+  <table>
+    <thead>
+      <tr>
+        <th>Kinase</th>
+        <th>Substrate</th>
+        <th>Phosphosite</th>
+        <th>Change(%)</th>
+        <th>Log2FoldChange</th>
+        <th>SubstrateEffect</th>
+      </tr>
+    </thead>
+    <tbody>
+  </table>
 
 The following additional headers can be selected;
 
- - Control_edge_usage
- - Treated_edge_usage
-
+  <table>
+    <thead>
+      <tr>
+        <th>ControlEdgeUsage</th>
+        <th>TreatedEdgeUsage </th>
+      </tr>
+    </thead>
+    <tbody>
+  </table>
 
     --edgeUsage    (FLAG)    Add edge usage numbers to output .csv, not required for cytoscape rendering
 
