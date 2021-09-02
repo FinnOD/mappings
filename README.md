@@ -2,7 +2,7 @@
 
 ## Mapping and Analysis of Phosphorylation Pathways Identified through Network/Graph Signalling
 
-MAPPINGS is a tool for the deconvolution of complex phosphorylation-based signalling datasets. It was designed to use antibody microarray datasets (eg. Kinexus KAM antibody microarrays), though any comparative dataset (control vs treated/infected) can be analysed. The MAPPINGS tool seeks to identify pathways of consistent phosphorylation signalling changes in a comparative dataset and rapidly identify lead networks for subsequent validation and exploration. The program functions through a random trails-based function which is influenced by the change in signals observed. First described by J. Adderley and F. O’Donoghue in MAPPINGS v1.0, a tool for network analysis of large phospho-signalling datasets: application to host erythrocyte response to *Plasmodium* infection ([Adderley et al., 2021](https://www.biorxiv.org/content/10.1101/2021.05.07.443051v1)).
+MAPPINGS is a tool for the deconvolution of complex phosphorylation-based signalling datasets. It was designed to use antibody microarray datasets (eg. Kinexus KAM antibody microarrays), though any comparative dataset (control vs treated/infected) can be analysed. The MAPPINGS tool seeks to identify pathways of consistent phosphorylation signalling changes in a comparative dataset and rapidly identify lead subnetworks for subsequent validation and exploration. The program functions through a random trails-based function which is influenced by the change in signals observed. First described by J. Adderley and F. O’Donoghue in MAPPINGS v1.0, a tool for network analysis of large phospho-signalling datasets: application to host erythrocyte response to *Plasmodium* infection ([Adderley et al., 2021](https://www.biorxiv.org/content/10.1101/2021.05.07.443051v1)).
 
 ![Example image of MAPPINGS output network formatted in cytoscape](https://github.com/FinnOD/mappings/blob/main/images/ExampleNetwork.jpg)
 
@@ -67,7 +67,7 @@ CSV file with headers:
 
 **ControlError(%)** – Mean control signal/value error as a percentage (Error range between replicates / mean signal/value * 100) – if performed on a single replicate fill this column with ‘0’
 
-<ins>**TreatedMean** – Mean treated/infected signal/value (mean of technical duplicates or of biological duplicates if available). Can be performed on single none replicated signal if desired.
+**TreatedMean** – Mean treated/infected signal/value (mean of technical duplicates or of biological duplicates if available). Can be performed on single none replicated signal if desired.
 
 **TreatedError(%)** – Mean treated/infected signal/value error as a percentage (Error range between replicates / mean signal/value * 100) – if performed on a single replicate fill this column with ‘0’
 
