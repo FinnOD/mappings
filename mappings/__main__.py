@@ -41,12 +41,12 @@ def validate_connection_network(ctx, param, value):
 
 # Start main. Uses if __name__.. to support runpy (python -m mappings)
 @click.command()
-@click.option('--nwalks', default=1000000, callback=validate_pos_int, help='Number of walks; default = 1,000,000')
+@click.option('--nwalks', '-N', default=1000000, callback=validate_pos_int, help='Number of walks; default = 1,000,000')
 @click.option('--errorThreshold', default=1.0, help='Error threshold used to refine data used, default = 1.0, recommended range = 0 - 1.0, (1.0 = total error is not greater than signal, 0 = no removal of high error signals) ')
 @click.option('--lowSignalCutOff', default=1000, help='Removal of low intensity signals, default = 1,000, recommended range = 500 - 1,500 for Kinexus antibody microarray datasets, can be move up or down depending on the desire output network size')
 @click.option('--panNormaliser', default=True, help='Normalises signals by available Pan-specific antibody data provided. Default = Yes (normalise)')
 @click.option('--edgeUsage', default=False, is_flag=True, help='Add edge usage numbers to output .csv, not required for Cytoscape rendering, default=False')
-@click.option('--minimumTrailLength', default=3, callback=validate_pos_int, help='The minimum number of edges a walk is required to pass through to be counted as a trail, default = 3, range = 1+, reducing this will result in more complex outputs which are less focused on pathway identification')
+@click.option('--minimumTrailLength', '-M', default=3, callback=validate_pos_int, help='The minimum number of edges a walk is required to pass through to be counted as a trail, default = 3, range = 1+, reducing this will result in more complex outputs which are less focused on pathway identification')
 @click.option('--connection_network_path', callback=validate_connection_network, type=click.Path(exists=True, readable=True, resolve_path=True), default=Path(dataDirectory) / 'input' / 'NetworkComplete.csv', help='Network of known phosphorylation connections.')
 
 @click.argument('array_data_path', callback=validate_array_data, type=click.Path(exists=True, readable=True, resolve_path=True))
