@@ -57,6 +57,21 @@ Each of the following options has a default set. Therefore, they only need to be
 
 CSV file with headers:
 
+  <table>
+    <thead>
+      <tr>
+        <th>UniprotID</th>
+        <th>AntibodyTarget</th>
+        <th>Phosphosite</th>
+        <th>ControlMean</th>
+        <th>ControlError(%)</th>
+        <th>TreatedMean</th>
+        <th>TreatedError(%)</th>
+      </tr>
+    </thead>
+    <tbody>
+  </table>
+
 **UniprotID** – (eg. Q9Y6R4) Must be accurate as this is what is used to map the dataset into the known interaction network.
 
 **AntibodyTarget** – This can be in any form or left blank
@@ -110,6 +125,7 @@ For visualisation of the output network, we recommend using [Cytoscape](https://
  - The network will render and using the Style tab the network can be visually customised to desired design. To use our custom style [Cytoscape Style](mappings/data/MAPPINGSCytoscapeStyle.xml).
 
 ### Connection  Network
+
 The phosphorylation network used here as a backbone for the MAPPINGS analysis is an accumulated from literature reports and has been updated to include further connections and phosphorylation effects (see [Adderley et al., 2021](https://www.biorxiv.org/content/10.1101/2021.05.07.443051v1)) and original network ([PhosphoAtlas](https://pubmed.ncbi.nlm.nih.gov/26921330/)). Updated version may be available under data/input/NetworkComplete.csv Please email the authors, or submit a pull request to update this file with any new data. Alternatively, additional connections can be amended into the NetworkComplete.csv if desired.
 
 ### Citation
