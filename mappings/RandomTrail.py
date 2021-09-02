@@ -1,16 +1,19 @@
 import itertools
 import random
 from tqdm import tqdm
-
+import time
+import click
 #######################################################################################################################
 # RandomTrail function (Walks as (N,N,N,N))
 
-def RandomTrail(g, nwalks, Control, Positive, minimumTrailLength):
+def RandomTrail(g, nwalks, Control, Positive, minimumTrailLength, abortTime=5):
 
 	pbar = tqdm(total=nwalks, desc='Running Random Trails', unit=' trails')  # Progress Bar
 	VTX = g.nodes()  # defines VTX as all of the nodes in the graph
 	walks = list()
 	j = 0
+	
+	updateTime = time.time()
 
 	while j < nwalks:
 
@@ -104,6 +107,14 @@ def RandomTrail(g, nwalks, Control, Positive, minimumTrailLength):
 
 			j = j + 1
 			pbar.update(1)
+
+			updateTime = time.time()
+
+		else:
+			if time.time() - updateTime > abortTime:
+				pbar.close()
+				click.echo('\n')
+				raise click.UsageError(f'Trails failed to accumulate. Try lowering the minimum trail length using the -M flag. Currently set to {minimumTrailLength}.')
 
 	pbar.close()
 
