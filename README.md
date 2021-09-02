@@ -1,4 +1,4 @@
-# 🗺 MAPPINGS v0.0.4
+# 🗺 MAPPINGS v0.1.0
 
 ## Mapping and Analysis of Phosphorylation Pathways Identified through Network/Graph Signalling
 

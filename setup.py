@@ -7,7 +7,7 @@ long_description = (this_directory / "README.md").read_text(encoding='utf-8')
 
 setup(
 	name='mappings',
-	version='0.0.4',
+	version='0.1.0',
 	description="Mapping and Analysis of Phosphorylation Pathways Identified through Network/Graph Signalling",
 	long_description=long_description,
 	long_description_content_type='text/markdown',
@@ -31,7 +31,7 @@ setup(
 		'bioinformatics',
 	],
 	classifiers=[
-		'Development Status :: 2 - Pre-Alpha',
+		'Development Status :: 4 - Beta',
 		'Environment :: Console',
 		'Topic :: Scientific/Engineering :: Bio-Informatics',
 		'Topic :: Scientific/Engineering :: Information Analysis',
@@ -41,6 +41,8 @@ setup(
 		'Operating System :: Microsoft :: Windows',
 		'Operating System :: POSIX',
 		'Programming Language :: Python',
+		'Programming Language :: Python :: 3 :: Only',
+		'Programming Language :: Python :: 3'
 	],
 
 	packages=['mappings'],
