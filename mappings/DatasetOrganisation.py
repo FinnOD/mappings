@@ -2,8 +2,14 @@ from mappings.getFoldChangeCDF import getFoldChangeCDF
 import pandas as pd
 import numpy as np
 
-def DatasetOrganisation(Data, LowSignalCutOff, ErrorThreshold):
-		# Rename columns to easier names
+def DatasetOrganisation(
+		Data: pd.DataFrame, 
+		LowSignalCutOff: float, 
+		ErrorThreshold: float, 
+		panNormaliser: bool
+	) -> pd.DataFrame:
+	
+	# Rename columns to easier names
 	columnNameDict = {
 		'UniprotID': 'UniprotID', 
 		'AntibodyTarget': 'Protein', 
@@ -16,14 +22,14 @@ def DatasetOrganisation(Data, LowSignalCutOff, ErrorThreshold):
 
 	Data = Data.rename(columns = columnNameDict)
 
-	# Remove pan-specific signals
-	Data = Data[~Data['Phosphosite'].str.contains("Pan", na=False)]
+	if not panNormaliser:
+		# Remove pan-specific signals
+		Data = Data[~Data['Phosphosite'].str.contains("Pan", na=False)]
 
 	# Remove Low intensity signals (If neither of the signals are above 1000 units)
 	Data = Data[(Data['URaw'] >= LowSignalCutOff) | (Data['IRaw'] >= LowSignalCutOff)]
 
 	# Identify signals where the total error is greater than set threshold
-
 	Data['PercentCFC'] = Data['IRaw'] / Data['URaw'] * 100 - 100
 	Data['InversePercentCFC'] = Data['URaw'] / Data['IRaw'] * 100 - 100
 
@@ -38,7 +44,7 @@ def DatasetOrganisation(Data, LowSignalCutOff, ErrorThreshold):
 
 	# Remove these high error to change ratio signals
 	Data = Data[Data['ErrorVerdict'].str.contains("Low", case=False, na=False)]
-	# Data.to_csv(r'Output/cutofffiture.csv')
+
 	# Remove special characters from Phosphosite column
 	Data = Data.replace("\+", ",", regex=True)  # replaces + with , \ needed as + is a special character
 
@@ -52,15 +58,43 @@ def DatasetOrganisation(Data, LowSignalCutOff, ErrorThreshold):
 
 	# Creates Reference for mapping to network
 	Data['Concat'] = Data['UniprotID'].map(str) + '/' + Data['Phosphosite'].map(str)
-
 	Data['FoldChange'] = Data['IRaw'] / Data['URaw']
-
 	Data['Log2FoldChange'] = np.log2(Data['FoldChange'])
 
-	# If multiple R/T/S values are available for a given phosphorylation site average values
-	Data = Data.groupby(['Concat'], as_index=False).agg(
-		{'Log2FoldChange': 'mean', 'UniprotID': 'first', 'Protein': 'first',
-		 'Phosphosite': 'first', 'FoldChange': 'mean'})
+	if not panNormaliser:
+
+		# If multiple R/T/S values are available for a given phosphorylation site average values
+		Data = Data.groupby(['Concat'], as_index=False).agg(
+			{'Log2FoldChange': 'mean', 'UniprotID': 'first', 'Protein': 'first',
+			'Phosphosite': 'first', 'FoldChange': 'mean'})
+			
+	else:
+
+		PanData = Data[Data['Phosphosite'].str.contains("Pan", na=False)]
+		PhosData = Data[~Data['Phosphosite'].str.contains("Pan", na=False)]
+
+		# If multiple values are available for a given phosphorylation site/protein average values
+		PhosData = PhosData.groupby(['Concat'], as_index=False).agg(
+			{'Log2FoldChange': 'mean', 'UniprotID': 'first', 'Protein': 'first',
+			'Phosphosite': 'first'})
+
+		PanData = PanData.groupby(['Concat'], as_index=False).agg(
+			{'Log2FoldChange': 'mean', 'UniprotID': 'first', 'Protein': 'first',
+			'Phosphosite': 'first'})
+
+		# Merge Pan and Phospho dataframes
+		Data = PhosData.merge(PanData, on='UniprotID', how='left')
+		Data.fillna(0, inplace=True)
+		Data.rename(columns={'Protein_x': 'Protein', 'Phosphosite_x': 'Phosphosite'}, inplace=True)
+
+		#  Adjust Phospho-signal change by Pan-specific signal change (Normalisation to protein amount)
+		Data['Log2FoldChange'] = Data['Log2FoldChange_x'] - Data['Log2FoldChange_y']
+
+		# Create Fold Change column
+		Data['FoldChange'] = 2 ** Data['Log2FoldChange']
+
+		Data.drop(['Concat_x', 'Log2FoldChange_x', 'Concat_y','Log2FoldChange_y', 'Protein_y', 'Phosphosite_y'], axis=1,
+				inplace=True)
 
 	# Create INV for negative runs
 	Data['INVLog2FoldChange'] = 1 / Data['Log2FoldChange']

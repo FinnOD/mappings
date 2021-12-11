@@ -1,11 +1,9 @@
 from mappings.RandomTrail import *
-from mappings.DatasetOrganisationNormalise import *
-from mappings.DatasetOrganisation import *
+from mappings.DatasetOrganisation import DatasetOrganisation
 from mappings.Merger import *
 from mappings.NetworkasDiGraph import *
 from itertools import chain
 import pandas as pd
-from pathlib import Path
 
 pd.options.mode.chained_assignment = None  # default='warn'
 
@@ -35,7 +33,6 @@ def edgetally(datalist, SpecificNetwork):
 def analyse(
 	arrayData: pd.DataFrame, 
 	connectionNetwork: pd.DataFrame,
-	outputPath: Path,
 	nWalks: int = 1000,
 	errorThreshold: float = 1.0, 
 	lowSignalCutOff: float = 1000.0,
@@ -48,20 +45,8 @@ def analyse(
 	# Cross-reactive Signals need to be removed.
 	# Biological replicate data needs to be averaged for the Signal data.
 
-	########################################################################################################################
-	# Dataset input
-	# Format is the following columns; Uniport ID(1), Protein name(2), Phosphosite(3), Control Signal(4),
-	# Control Signal Error(5), Test Signal (6), Test Signal Error (7)
-	# ArrayData = pd.read_csv(r'Input/PfTrophData.csv')
-
-	########################################################################################################################
-	# ConnectionNetwork = pd.read_csv(r'Input\NetworkComplete.csv')  # import CompleteNetwork
-
 	# Organisation of Dataset and determination of quartiles of the data
-	if panNormaliser == True:
-		PosDataCorrected, NegDataCorrected = DatasetOrganisationNormalise(arrayData, lowSignalCutOff, errorThreshold)
-	else:
-		PosDataCorrected, NegDataCorrected = DatasetOrganisation(arrayData, lowSignalCutOff, errorThreshold)
+	PosDataCorrected, NegDataCorrected = DatasetOrganisation(arrayData, lowSignalCutOff, errorThreshold, panNormaliser)
 
 	# Merging of Network with Array dataset
 	# Returns mapped dataset, Positive Network and Negative Network
@@ -142,6 +127,6 @@ def analyse(
 	NetworkFinal = NetworkFinal[outputColumns]
 	NetworkFinal = NetworkFinal.rename(columns=columnNameDict)
 
-	# Output for Cytoscape
-	NetworkFinal.to_csv(outputPath)
+	# Return for final output
+	return NetworkFinal
 

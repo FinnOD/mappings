@@ -54,10 +54,9 @@ def validate_connection_network(ctx, param, value):
 
 def main(nwalks, array_data_path, output_path, connection_network_path, errorthreshold, lowsignalcutoff, pannormaliser, edgeusage, minimumtraillength):
 
-	analyse(
+	analysedNetwork = analyse(
 		arrayData = pd.read_csv(array_data_path),
 		connectionNetwork = pd.read_csv(connection_network_path),
-		outputPath = output_path,
 		nWalks = nwalks,
 		errorThreshold = errorthreshold, 
 		lowSignalCutOff = lowsignalcutoff,
@@ -66,6 +65,7 @@ def main(nwalks, array_data_path, output_path, connection_network_path, errorthr
 		minimumTrailLength= minimumtraillength
 	)
 
+	analysedNetwork.to_csv(output_path)
+
 if __name__ == '__main__':
 	main()
-	#Add no further lines
